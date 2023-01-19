@@ -1,9 +1,26 @@
-#Testing python enviorment
+import discord
+from dotenv import load_dotenv
+import os
 
-print("Hell World")
+#Credentials
+load_dotenv('.env')
 
-a = 5
 
-b = 6
+intents = discord.Intents.default()
+client = discord.Client(intents=intents)
 
-print( a + b )
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
+@client.event
+async def on_message(message):
+
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('!hello'):
+        await message.channel.send('Hello!')
+
+
+client.run(os.getenv('discordToken'))
