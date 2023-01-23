@@ -65,6 +65,11 @@ feedEntryID = parser.entries[0].id
 normalizedTitle = unicodedata.normalize('NFD', feedEntryTitle)
 print(normalizedTitle)
 '''
+#
+
+
+
+
 
 
 
@@ -81,12 +86,14 @@ print("Entry Publish Date: {}".format(feedEntryPublished.encode("utf-8")))
 print("Entry Letterbox'd ID: {}".format(feedEntryID.encode("utf-8")))
 '''
 
-print("===============================================================================")
+#print("===============================================================================")
 
+'''
 def regexTitleSearch(title):
     titleRegex = re.search("([a-z A-Z\d.:]*, \d{4})", title)
     return titleRegex.group()
 
+#gets every title in tandem with function
 for entry in parser.entries:
     rawTitle = entry.title
     try:
@@ -94,3 +101,37 @@ for entry in parser.entries:
     except: 
         #means thats either we hit the first entry which is some weird stuff or movie doesnt has some weird titling thing.
         pass
+'''
+
+#Different functions from feed parser 
+feedSummary = parser.entries[0].summary
+
+#this for some reason does not work
+#feedContent = parser.entries[0].content
+
+print("Entry Summary: {}".format(feedSummary))
+#print("Entry Content: {}".format(feedContent))
+'''
+These entries dont exist with Letterbox'd RSS
+'''
+#We can get super specific and ask for details for each field
+#feedTitleDetail = parser.entries[0].title_detial
+#feedSubTitleDetail = parser.entries[0].subtitle_detial
+#feedSummaryDetail = parser.entries[0].summary_detial
+#feedContent0 = parser.entries[0].content[0] #should return some HTML?
+
+#print("Entry Title detail: {}".format(feedTitleDetail))
+#print("Entry SubTitle Detail: {}".format(feedSubTitleDetail))
+#print("Entry Summary Detail: {}".format(feedSummaryDetail))
+#print("Entry Content0: {}".format(feedContent0))
+
+#Feed Image
+#Letterbox'd does not have image
+#feedImg = parser.feed.image
+
+#Accessing multiple categories
+#Letterbox'd does not have categories
+#feedCat = parser.feed.categories
+
+
+print("===============================================================================")
